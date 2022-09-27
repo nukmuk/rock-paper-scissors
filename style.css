@@ -18,6 +18,9 @@ body {
 	/* width: 500px; */
 	align-items: center;
 	gap: 24px;
+	/* min-width: 50%; */
+	width: 100%;
+	max-width: 400px;
 }
 
 .buttons,
@@ -32,8 +35,6 @@ body {
 	padding: 16px;
 	border-radius: 12px;
 	margin: 16px 0px;
-	/* width: 50%; */
-	/* max-width: 380px; */
 }
 
 .buttons {
@@ -53,10 +54,35 @@ button {
 	font-size: 16px;
 }
 
+.choices {
+	display: flex;
+	font-size: 36px;
+	align-items: center;
+	width: 87%;
+	justify-content: space-between;
+}
+
+.p-choice,
+.c-choice,
+.vs {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 0px;
+}
+
+.vs {
+	font-size: 28px;
+	position: relative;
+	/* top: 16px; */
+	/* bottom: 36px; */
+	top: 100px;
+}
+
 .scores {
 	display: flex;
 	justify-content: space-between;
-	width: 120%;
+	width: 100%;
 	flex-wrap: wrap;
 	font-size: 24px;
 	color: #eaeaea;
@@ -68,6 +94,7 @@ button {
 	flex-direction: column;
 	align-items: center;
 	gap: 12px;
+	width: 56px;
 }
 
 .p-score-num,
@@ -107,7 +134,7 @@ button {
 
 	border-radius: 12px;
 	overflow: hidden;
-	max-height: 400px;
+	max-height: 600px;
 	overflow-y: scroll;
 
 	margin: 16px;

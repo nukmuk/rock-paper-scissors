@@ -17,6 +17,10 @@ let results;
 const resultsFull = document.querySelector(".results-full");
 const resultsText = document.querySelector(".results-full .text");
 
+const playerChoice = document.querySelector(".p-choice");
+const computerChoice = document.querySelector(".c-choice");
+const vsText = document.querySelector(".vs");
+
 function playRound(playerSelection, computerSelection) {
 	const ps = playerSelection.toLowerCase();
 	const cs = computerSelection.toLowerCase();
@@ -26,13 +30,14 @@ function playRound(playerSelection, computerSelection) {
 		return promptPlay();
 	}
 
-	console.log("Player chose " + ps);
-	console.log("Computer chose " + cs);
+	playerChoice.innerText = playerSelection;
+	computerChoice.innerText = computerSelection;
+	vsText.innerText = "vs";
 
 	let result;
 
 	const resultDiv = document.createElement("div");
-	let text = ps + " vs " + cs + ": ";
+	let text = playerSelection + " vs " + computerSelection + ": ";
 
 	let background;
 	let lightColor = "eaeaea";
