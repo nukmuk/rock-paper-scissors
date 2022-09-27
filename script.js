@@ -6,6 +6,9 @@ for (const btn of buttons) {
 	});
 }
 
+let playerScore = 0;
+let computerScore = 0;
+
 const results = document.querySelector(".results");
 
 function playRound(playerSelection, computerSelection) {
