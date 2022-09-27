@@ -1,0 +1,77 @@
+body {
+	background: #202225;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: sans-serif;
+	overflow: hidden;
+}
+
+.game {
+	display: flex;
+	flex-direction: column;
+	border-width: 1px;
+	/* border-style: solid; */
+	border-color: white;
+	/* width: 500px; */
+	align-items: center;
+}
+
+.buttons {
+	background: #2f3136;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	gap: 16px;
+	padding: 16px;
+	border-radius: 12px;
+	margin: 16px 0px;
+	/* width: 50%; */
+	/* max-width: 380px; */
+}
+
+button {
+	color: white;
+	background: hsl(332, 100%, 50%);
+	border-radius: 8px;
+	border-style: none;
+	padding: 8px 24px;
+	font-size: 16px;
+}
+
+.resultsFull {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 120%;
+	overflow: hidden;
+	scrollbar-width: none;
+	gap: 8px;
+}
+
+.text {
+	color: #888888;
+	font-size: 16px;
+}
+
+.results {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	text-align: center;
+
+	border-radius: 12px;
+	overflow: hidden;
+	max-height: 400px;
+	overflow-y: scroll;
+}
+
+/* remove scrollbar */
+::-webkit-scrollbar {
+	width: 0px;
+}
+
+.result {
+	padding: 12px;
+}

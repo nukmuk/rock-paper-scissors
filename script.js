@@ -1,37 +1,12 @@
-game(5);
-
-function game(rounds) {
-	let ps = 0;
-	let cs = 0;
-
-	for (let i = 0; i < rounds; i++) {
-		const result = promptPlay();
-		switch (result) {
-			case 0:
-				console.log("you lost");
-				cs++;
-				break;
-			case 1:
-				console.log("you win");
-				ps++;
-				break;
-
-			default:
-				console.log("it's a tie");
-				break;
-		}
-	}
-
-	console.log("Player score: " + ps);
-	console.log("Computer score: " + cs);
-	if (ps > cs) {
-		console.log("Player wins");
-	} else if (cs > ps) {
-		console.log("Computer wins");
-	} else {
-		console.log("Tie");
-	}
+const buttons = document.querySelectorAll("button");
+console.log(buttons);
+for (const btn of buttons) {
+	btn.addEventListener("click", () => {
+		playRound(btn.className, getComputerChoice());
+	});
 }
+
+const results = document.querySelector(".results");
 
 function playRound(playerSelection, computerSelection) {
 	const ps = playerSelection.toLowerCase();
@@ -47,24 +22,40 @@ function playRound(playerSelection, computerSelection) {
 
 	let result;
 
+	const resultDiv = document.createElement("div");
+	let text = ps + " vs " + cs + ": ";
+
+	let background;
+	let color = "black";
+
 	if (
 		(ps == "rock" && cs == "paper") ||
 		(ps == "paper" && cs == "scissors") ||
 		(ps == "scissors" && cs == "rock")
 	) {
 		result = 0; // player lost
+		text += "Computer won";
+		background = "crimson";
+		color = "white";
 	} else if (ps == cs) {
 		result = -1; // tie
+		text += "Tie";
+		background = "gray";
+		color = "white";
 	} else {
 		result = 1; // player win
+		text += "Player won";
+		background = "lightgreen";
 	}
 
-	return result;
-}
+	resultDiv.style.color = color;
+	resultDiv.innerText = text;
+	resultDiv.style.background = background;
+	resultDiv.className = "result";
 
-function promptPlay() {
-	console.log("-= Choose rock, paper or scissors =-");
-	return playRound(prompt(), getComputerChoice());
+	results.prepend(resultDiv);
+
+	return result;
 }
 
 function getComputerChoice() {
