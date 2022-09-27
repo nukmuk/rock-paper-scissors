@@ -5,6 +5,7 @@ body {
 	align-items: center;
 	font-family: sans-serif;
 	overflow: hidden;
+	overflow-y: scroll;
 	color: white;
 }
 
@@ -78,6 +79,11 @@ button {
 	/* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 
+/* remove scrollbar */
+::-webkit-scrollbar {
+	width: 0px;
+}
+
 .results-full {
 	display: flex;
 	flex-direction: column;
@@ -103,13 +109,19 @@ button {
 	overflow: hidden;
 	max-height: 400px;
 	overflow-y: scroll;
-}
 
-/* remove scrollbar */
-::-webkit-scrollbar {
-	width: 0px;
+	margin: 16px;
 }
 
 .result {
 	padding: 8px;
+}
+
+.endresult {
+	font-size: 24px;
+	padding: 16px;
+	/* margin-top: 16px; */
+	/* border-radius: 8px; */
+
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }

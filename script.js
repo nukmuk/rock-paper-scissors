@@ -6,10 +6,16 @@ for (const btn of buttons) {
 	});
 }
 
+const winPoints = 5;
+
 let playerScore = 0;
 let computerScore = 0;
+const playerScoreHTML = document.querySelector(".p-score-num");
+const computerScoreHTML = document.querySelector(".c-score-num");
 
-const results = document.querySelector(".results");
+let results;
+const resultsFull = document.querySelector(".results-full");
+const resultsText = document.querySelector(".results-full .text");
 
 function playRound(playerSelection, computerSelection) {
 	const ps = playerSelection.toLowerCase();
@@ -29,7 +35,8 @@ function playRound(playerSelection, computerSelection) {
 	let text = ps + " vs " + cs + ": ";
 
 	let background;
-	let color = "black";
+	let lightColor = "eaeaea";
+	let darkColor = "#222222";
 
 	if (
 		(ps == "rock" && cs == "paper") ||
@@ -37,18 +44,21 @@ function playRound(playerSelection, computerSelection) {
 		(ps == "scissors" && cs == "rock")
 	) {
 		result = 0; // player lost
+		computerScore++;
 		text += "Computer won";
-		background = "crimson";
-		color = "white";
+		background = "hsl(348, 83%, 55%)";
+		color = lightColor;
 	} else if (ps == cs) {
 		result = -1; // tie
 		text += "Tie";
 		background = "gray";
-		color = "white";
+		color = lightColor;
 	} else {
 		result = 1; // player win
+		playerScore++;
 		text += "Player won";
-		background = "lightgreen";
+		background = "hsl(120, 73%, 75%)";
+		color = darkColor;
 	}
 
 	resultDiv.style.color = color;
@@ -56,7 +66,36 @@ function playRound(playerSelection, computerSelection) {
 	resultDiv.style.background = background;
 	resultDiv.className = "result";
 
+	results = document.querySelector(".results");
 	results.prepend(resultDiv);
+
+	if (playerScore === winPoints || computerScore === winPoints) {
+		const endResultDiv = document.createElement("div");
+		endResultDiv.className = "result endresult";
+		if (playerScore > computerScore) {
+			// win
+			background = "hsl(120, 73%, 65%)";
+			endResultDiv.style.color = "black";
+			endResultDiv.innerHTML = `Player <strong>${playerScore}</strong>  vs  ${computerScore} Computer`;
+		} else {
+			// lose
+			background = "hsl(348, 83%, 47%)";
+			endResultDiv.style.color = "white";
+			endResultDiv.innerHTML = `Player ${playerScore}  vs  <strong>${computerScore}</strong> Computer`;
+		}
+		endResultDiv.style.background = background;
+		results.prepend(endResultDiv);
+
+		const newResults = document.createElement("div");
+		newResults.className = "results";
+		resultsText.insertAdjacentElement("afterend", newResults);
+
+		playerScore = 0;
+		computerScore = 0;
+	}
+
+	playerScoreHTML.innerText = playerScore;
+	computerScoreHTML.innerText = computerScore;
 
 	return result;
 }
