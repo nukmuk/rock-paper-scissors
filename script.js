@@ -1,5 +1,4 @@
 const buttons = document.querySelectorAll("button");
-console.log(buttons);
 for (const btn of buttons) {
 	btn.addEventListener("click", () => {
 		playRound(btn.className, getComputerChoice());
@@ -25,14 +24,11 @@ function playRound(playerSelection, computerSelection) {
 	const ps = playerSelection.toLowerCase();
 	const cs = computerSelection.toLowerCase();
 
-	if (!["rock", "paper", "scissors"].includes(ps)) {
-		console.log("Invalid input");
-		return promptPlay();
-	}
-
 	playerChoice.innerText = playerSelection;
 	computerChoice.innerText = computerSelection;
-	vsText.innerText = "vs";
+	playerChoice.style.visibility = "visible";
+	computerChoice.style.visibility = "visible";
+	vsText.style.visibility = "visible";
 
 	let result;
 
